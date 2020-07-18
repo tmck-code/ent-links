@@ -13,6 +13,9 @@ class SonarrShow:
     @property
     def title(self): return self.raw_obj['title']
 
+    def __str__(self):
+        return f'{self.title} ({self.tvdb_id})'
+
 
 class SonarrShowCollection:
     def __init__(self, raw_objs):
@@ -23,6 +26,12 @@ class SonarrShowCollection:
 
     def all_tvdb_ids(self):
         return [s.tvdb_id for s in self.shows]
+
+    def __str__(self):
+        msg = []
+        for s in self.shows:
+            msg.append(str(s))
+        return '\n'.join(msg)
 
 
 @dataclass
