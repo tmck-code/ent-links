@@ -28,6 +28,14 @@ class TVDBApi:
         ).json()
         return response
 
+    def get_episodes(self, series_id, season_id, episode_id):
+        response = requests.get(
+            f'{TVDBApi.BASE_URL}/series/{series_id}/episodes/query?airedSeason={season_id}&airedEpisode={episode_id}',
+            headers=self.auth_header
+        )
+        print(response.text)
+        return response.json()
+
     def get_series_actors(self, series_id):
         response = requests.get(
             f'{TVDBApi.BASE_URL}/series/{series_id}/actors',
