@@ -12,4 +12,10 @@ wget https://datasets.imdbws.com/title.ratings.tsv.gz
 
 mkdir datasets
 
-mv *.gz datasets
+mv -v *.gz datasets
+
+cd datasets
+
+gzip -dv *
+
+ls -alh
